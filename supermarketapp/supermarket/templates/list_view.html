@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="">
+    <div class="row mt-4">
+        <div class="col-auto">
+            <input class="form-control" type="text" name="keyword" id="keyword" placeholder="Keyword" value="{{ keyword }}">
+        </div>
+        <div class="col-auto">
+            <input type="submit" class="btn btn-primary" value="Search">
+        </div>
+        <div class="col-auto">
+            <a href="/" class="btn btn-success">Refresh</a>
+        </div>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <th>Tên mặt hàng</th>
+        <th>Giá / 1đv</th>
+        <th>Số lượng</th>
+        <th>Loại</th>
+        <th>
+            <a href="{% url 'create' %}" class="btn btn-primary mt-4">Create</a>
+        </th>
+    </thead>
+    <tbody>
+    {% for item in mathangs %}
+        <tr>
+            <td>
+                <a href="/{{ item.id }}/detail">{{ item.name }}</a>
+            </td>
+            <td>{{ item.gia | default:'-'}}</td>
+            <td>{{ item.stock | default:'-'}}</td>
+            <td>{{ item.loai | default:'-'}}</td>
+            <td>
+                <a href="{% url 'update' item.id %}" class="btn btn-success">Update</a>
+                <a href="{% url 'delete' item.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}  

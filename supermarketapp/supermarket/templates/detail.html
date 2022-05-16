@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Thông tin về mặt hàng: {{ mathang.name|capfirst}}</h1>
+    <p>Giá trên 1 đv: {{ mathang.gia }} vnd</p>
+    <p>Số lượng còn lại trong kho: {{ mathang.stock }}</p>
+{% endblock %}

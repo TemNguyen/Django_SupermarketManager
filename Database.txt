@@ -1,0 +1,6 @@
+viet ung dung web quan ly sieu thi
+
+
+model:
+MatHang: id, ten, gia, stock, loai
+LoaiMatHang: id, ten
